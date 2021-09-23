@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-RU'  #меняем язык
+LANGUAGE_CODE = 'ru-RU'# меняем язык
 
 TIME_ZONE = 'UTC'
 
@@ -117,9 +117,24 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+#ТУТ Указываем путь к сттатик файлам. Легче это сделать через сайт джанго.
+#Создаем папку statiс где будут лежать наши сss файлы.
+#Указываем путь к этой папаке
+#В файле html куда мы подключ статик файлы с пом {% loyd static %}
+#STATICFILES_DIRS - список дерикторий статик файлов
+STATICFILES_DIRS = [
+    BASE_DIR / "pr1/static/",
+]
+#Чтобы джанго не ходил по всем папкам каждый раз, нужно собрать все статические файлы в одном месте STATIC_ROOT
+#Cобираем статик файлы в одном месте
+#C:\Users\77750\Desktop\NePrDj\pr1_root1>
+#python manage.py collectstatic
+#Путь для статических файлов,которые згар в процессе разраб
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#Динамюфайлы. Указ где их хранить. вг ланом url подкл: + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

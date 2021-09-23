@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Новая страница</h1>
-{{a}}
-<h1>{{text}}</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Тайтл Индекс{% endblock %}
+{% load static %}
+{% block content %}
+<h2>Данные из индекса </h2>
+
+<img src="{% static 'IMG\IMG_1.jpg' %}" height="700">
+
+{% include 'index_old.html' %}
+
+{% endblock %}
